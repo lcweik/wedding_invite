@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 本地字体定义 - 使用子集化后的字体 */
+@font-face {
+  font-family: 'TitleFont';
+  src: url('/font/subset/title_subset.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MuyaoFont';
+  src: url('/font/subset/muyao_subset.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 完整版字体定义 - 用于祝福语输入和显示 */
+@font-face {
+  font-family: 'MuyaoFontFull';
+  src: url('/font/Muyao-Softbrush.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 228, 225;
+  --background-end-rgb: 255, 182, 193;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'sans-serif';
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wedding-gradient {
+  background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 25%, #FFE66D 50%, #A8E6CF 75%, #FFE5E5 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 0px rgba(255, 255, 255, 0.8), 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.cute-card {
+  background: linear-gradient(135deg, #FFE5E5 0%, #A8E6CF 100%);
+  border: 4px solid #FF6B6B;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+}
+
+.cute-card:hover {
+  transform: rotate(1deg) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+}
+
+.heart-beat {
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1) rotate(0deg); }
+  14% { transform: scale(1.3) rotate(5deg); }
+  28% { transform: scale(1) rotate(0deg); }
+  42% { transform: scale(1.3) rotate(-5deg); }
+  70% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  50% { transform: scale(1.05) rotate(5deg); }
+  70% { transform: scale(0.9) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.floating-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  color: #FF6B6B;
+  animation: float-up 6s linear infinite;
+  opacity: 0.8;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+} 

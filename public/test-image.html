@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片加载测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .image-test {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        .image-test img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>图片加载测试</h1>
+        
+        <div class="image-test">
+            <h3>测试 wedding.jpg</h3>
+            <img 
+                src="/wedding.jpg" 
+                alt="婚礼照片测试"
+                onload="this.nextElementSibling.innerHTML='✅ 图片加载成功'"
+                onerror="this.nextElementSibling.innerHTML='❌ 图片加载失败'"
+            />
+            <div class="status">加载中...</div>
+        </div>
+
+        <div class="image-test">
+            <h3>测试 R-C.png</h3>
+            <img 
+                src="/R-C.png" 
+                alt="R-C图片测试"
+                onload="this.nextElementSibling.innerHTML='✅ 图片加载成功'"
+                onerror="this.nextElementSibling.innerHTML='❌ 图片加载失败'"
+            />
+            <div class="status">加载中...</div>
+        </div>
+
+        <div class="image-test">
+            <h3>网络图片测试</h3>
+            <img 
+                src="https://via.placeholder.com/300x200/FFE4E1/FF69B4?text=Test+Image" 
+                alt="网络图片测试"
+                onload="this.nextElementSibling.innerHTML='✅ 网络图片加载成功'"
+                onerror="this.nextElementSibling.innerHTML='❌ 网络图片加载失败'"
+            />
+            <div class="status">加载中...</div>
+        </div>
+
+        <div class="image-test">
+            <h3>调试信息</h3>
+            <div id="debug-info">
+                <p>当前URL: <span id="current-url"></span></p>
+                <p>图片路径: <span id="image-path"></span></p>
+                <p>完整图片URL: <span id="full-image-url"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 显示调试信息
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('image-path').textContent = '/wedding.jpg';
+        document.getElementById('full-image-url').textContent = window.location.origin + '/wedding.jpg';
+        
+        // 测试图片加载
+        const testImage = new Image();
+        testImage.onload = function() {
+            console.log('图片加载成功:', this.src);
+        };
+        testImage.onerror = function() {
+            console.error('图片加载失败:', this.src);
+        };
+        testImage.src = '/wedding.jpg';
+    </script>
+</body>
+</html> 
